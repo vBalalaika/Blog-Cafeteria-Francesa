@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - AGREGA TU POSTRE SELECTO</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container my-8">
+    <br>
+        <form action={% url 'recetas:crear_postre' %} method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <table>
+            {{form.media}}
+            {{form}}
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary btn-sm">Agregar</button>
+    </form>
+</div>
+{% endblock contenidoQueCambia %}

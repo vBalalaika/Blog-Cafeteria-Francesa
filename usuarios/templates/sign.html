@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - Inicia tu sesion</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container my-8">
+    {% if form.error %}
+    <p>Revisa tus datos</p>
+    {% endif %}
+    <form action={% url 'usuarios:sign' %} method="post">
+        {% csrf_token %}
+        <table>
+            {{form}}
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary btn-sm">Iniciar Sesion</button>
+    </form>
+    <br>
+    No tienes cuenta?
+    <br>
+    <a class="btn btn-secondary btn-sm" href={% url 'usuarios:registro' %} role="submit">Registrate aqui</a>
+    <br>
+    <a class="btn btn-secondary btn-sm" href={% url 'recetas:home' %} role="submit">Regresar</a>
+</div>
+{% endblock contenidoQueCambia %}

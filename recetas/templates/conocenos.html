@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - AUTOR</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{% static 'img/yo.jpeg' %}" alt="Imagen de Giampiero" class="img-fluid rounded">
+      </div>
+      <div class="col-md-6">
+        <h1 class="text-primary">Sobre mí</h1>
+        <p class="lead">Hola, soy Giampiero, un estudiante de la carrera de Ingeniería de Software. Me apasiona aprender lenguajes de programación.</p>
+        <p>Actualmente tengo conocimientos en Java, PHP, Python y un poco de C#.</p>
+      </div>
+    </div>
+  </div>
+{% endblock contenidoQueCambia %}

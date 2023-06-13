@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - REGISTRATE</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container my-8">
+    <br>
+    {% if form.error %}
+    <p>Datos incorrectos</p>
+    {% endif %}
+    <form action={% url 'usuarios:registro' %} method="post">
+        {% csrf_token %}
+        <table>
+            {{form}}
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary btn-sm">Registrarse</button>
+    </form>
+    <a class="btn btn-secondary btn-sm" href={% url 'recetas:home' %} role="submit">Atras</a>
+</div>
+{% endblock contenidoQueCambia %}

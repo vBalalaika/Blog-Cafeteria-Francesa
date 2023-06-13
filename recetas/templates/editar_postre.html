@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - MODIFICA TUS POSTRES SELECTOS</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container my-8">
+    <br>
+{% if request.user.is_authenticated %}
+<form action={% url 'recetas:editar_postre' postre.id %} method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <table>
+        {{form.media}}
+        {{form}}
+    </table>
+    <br>
+    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+</form>
+<br>
+<a class="btn btn-secondary btn-sm" href={% url 'recetas:lista_postre' %} role="submit">Atras</a>
+{% endif %}
+</div>
+{% endblock contenidoQueCambia %}

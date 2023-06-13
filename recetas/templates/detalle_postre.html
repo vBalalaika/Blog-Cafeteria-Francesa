@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - CONOCE LOS POSTRES SELECTOS PARA TI</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container my-8">
+    <br>
+    <div class="card mx-auto" style="width: 50%; height: 100%">
+        <img class="card-img-top" src="{{ receta.imagenp.url }}" alt="Card image cap" style="object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{ receta.titulo }}</h5>
+          <p class="card-text">{{ receta.informacion_adicional | safe }}</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Dificultad:</strong>  {{ receta.dificultad }}</li>
+            <li class="list-group-item"><strong>Para:</strong>  {{ receta.cantidad_de_personas }} personas</li>
+            <li class="list-group-item"><strong>Autor:</strong> {{ receta.autor }}</li>
+          </ul>
+          {% if request.user.is_authenticated %}
+            {% if receta.receta %}
+                <a href={{receta.receta.url}} target="_blank" class="btn btn-secondary">Descarga tu receta</a>
+            {% endif %}
+            {% if request.user == postre.autor %}
+            <a href={% url 'recetas:editar_postre' receta.id %} class="btn btn-secondary">Editar</a>
+            <a href={% url 'recetas:eliminar_postre' receta.id %} class="btn btn-danger">Eliminar</a>
+            {% endif %}
+          {% else %}
+            {% if receta.receta %}
+            <a href= {% url 'usuarios:sign' %} class="btn btn-primary">Descargar receta de postre</a>
+            {% endif %}
+          {% endif %}
+        </div>
+    </div>
+    <a class="btn btn-secondary btn-sm" href={% url 'recetas:lista_postre' %} role="submit">Atras</a>
+  </div>
+{% endblock contenidoQueCambia %}

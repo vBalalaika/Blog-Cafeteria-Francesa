@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - ELIMINA TU POSTRES</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container my-8">
+    {% if request.user.is_authenticated %}
+    <form action="{% url 'recetas:eliminar_postre' receta.id %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <h5> Deseas eliminar tu {{postre}} ?</h5>
+        <br>
+        <button type="submit" class="btn btn-primary btn-sm">Eliminar</button>
+    </form>
+    <br>
+    <a class="btn btn-secondary btn-sm" href={% url 'recetas:lista_postre' %} role="submit">Atras</a>
+    {% endif %}
+    </div>
+{% endblock contenidoQueCambia %}

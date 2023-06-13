@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - EDITA TU PERFIL</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<br>
+<div class="container my-8">
+    {% if form.errors %}
+    <p>ERROR, LLENA DE NUEVO LOS CAMPOS</p>
+    {% endif %}
+    <form action={% url 'usuarios:edicionPerfil' %} method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <table>
+            {{form}}
+        </table>
+        <br>
+        <a href= {% url 'usuarios:cambio_password' %} class="btn btn-secondary btn-sm">Cambia tu contraseña</a>
+        <button type="submit" class="btn btn-primary btn-sm">Guarda los cambios</button>
+    </form>
+    <a class="btn btn-secondary btn-sm" href={% url 'usuarios:perfil' %} role="submit">Atras</a>
+</div>
+{% endblock contenidoQueCambia %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>LA PÂTISSERIE DOUCE TENTATION - PERFIL</title>
+{% endblock titulo %}
+{% block contenidoQueCambia %}
+<div class="container my-8">
+    <br>
+    <div class="card mx-auto" style="width: 50%; height: 100%">
+        {% if request.user.is_authenticated %}
+        {% if request.user.infadicional.avatar %}
+        <img class="card-img-top" src="{{ request.user.infadicional.avatar.url }}" alt="Cfoto" style="object-fit: cover;">
+        {% else %}
+        <p>No se ha agregado ninguna foto de avatar.</p>
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title"> Informacion </h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Usuario:</strong>  {{ request.user.username }}</li>
+            <li class="list-group-item"><strong>Nombre:</strong>  {{ request.user.first_name }}</li>
+            <li class="list-group-item"><strong>Apellido:</strong>  {{ request.user.last_name }}</li>
+            <li class="list-group-item"><strong>Correo Electrónico:</strong> {{ request.user.email }}</li>
+          </ul>
+          <a href= {% url 'usuarios:edicionPerfil' %} class="btn btn-primary btn-sm">Edita tu perfil</a>
+        {% endif %}
+        </div>
+    </div>
+    <a class="btn btn-secondary btn-sm" href={% url 'recetas:lista_postre' %} role="submit">Atras</a>
+</div>
+{% endblock contenidoQueCambia %}
