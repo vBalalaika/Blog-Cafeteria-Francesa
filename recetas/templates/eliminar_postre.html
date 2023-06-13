@@ -8,7 +8,7 @@
     <form action="{% url 'recetas:eliminar_postre' receta.id %}" method="POST">
         {% csrf_token %}
         <br>
-        <h5> Deseas eliminar tu {{postre}} ?</h5>
+        <h5> Deseas eliminar tu postre ?</h5>
         <br>
         <button type="submit" class="btn btn-primary btn-sm">Eliminar</button>
     </form>
