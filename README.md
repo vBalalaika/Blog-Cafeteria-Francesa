@@ -19,6 +19,3 @@ Nota: Encontrarás un archivo `requirements.txt` en el repositorio, pero solo in
 Este proyecto es sobre un blog de postres, puedes colocar la receta de tu postre favorito para que los demas puedan verla.
 
 Este proyecto utiliza Django como framework de desarrollo web y SQLite como base de datos. El entorno de desarrollo es administrado con venv y se especifican todas las dependencias en un archivo requirements.txt. 
-
-## Video demostrativo
-https://youtu.be/Mc64x0_g3Zc
